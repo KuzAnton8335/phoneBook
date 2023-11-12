@@ -89,7 +89,8 @@ const data = [
 		 <th>Фамилия</th>
 		 <th>Телефон</th>
 		 </tr>
-		`)
+		`);
+
 		const tbody = document.createElement('tbody');
 		table.append(thead, tbody);
 		table.tbody = tbody;
@@ -195,6 +196,10 @@ const data = [
 		buttonDel.classList.add('del-icon');
 		tdDel.append(buttonDel);
 
+		const btnEdit = document.createElement('button');
+		btnEdit.classList.add('btn', 'btn-info', 'btn-edit');
+		btnEdit.textContent = "редактировать";
+
 		const tdName = document.createElement('td');
 		tdName.textContent = firstName;
 		const tdSurname = document.createElement('td');
@@ -205,7 +210,7 @@ const data = [
 		phoneLink.textContent = phone;
 		tr.phoneLink = phoneLink;
 		tdPhone.append(phoneLink);
-		tr.append(tdDel, tdName, tdSurname, tdPhone);
+		tr.append(tdDel, tdName, tdSurname, tdPhone, btnEdit);
 
 		return tr;
 	}
@@ -243,7 +248,7 @@ const data = [
 			formOverlay.classList.add('is-visible');
 		});
 
-		form.addEventListener('click', event  =>{
+		form.addEventListener('click', event => {
 			event.stopPropagation();
 		})
 

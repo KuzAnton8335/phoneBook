@@ -257,8 +257,6 @@ const data = [
 			formOverlay.classList.add('is-visible');
 		});
 
-
-
 		formOverlay.addEventListener('click', (e) => {
 			const target = e.target;
 			if (target === formOverlay || target.closest('.close')) {

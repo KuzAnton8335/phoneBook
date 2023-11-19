@@ -221,7 +221,6 @@ const data = [
 	}
 
 
-
 	const renderContacts = (elem, data) => {
 		const allRow = data.map(createRow);
 		elem.append(...allRow);
@@ -275,8 +274,11 @@ const data = [
 		});
 	};
 
-	const addContactData = contact => {
+
+
+	const addContactData = (contact) => {
 		data.push(contact);
+		setStorage('contacts', contact);
 		console.log(data);
 	};
 
@@ -298,6 +300,29 @@ const data = [
 		});
 	}
 
+	// функционал работы с localStorage и sessionStorage
+
+	const getStorage = (key) => {
+		const data = localStorage.getItem(key);
+		return data ? JSON.parse(data) : [];
+	};
+
+
+	const setStorage = (key, obj) => {
+		const data = getStorage(key);
+		data.push(obj);
+		localStorage.setItem(key, JSON.stringify(data));
+	};
+
+	const removeStorage = (key, phone) => {
+		const data = getStorage(key);
+		const newData = data.filter((contact) => contact.phone !== phone);
+		localStorage.setItem(key, JSON.stringify(newData));
+	};
+
+
+	// функционал
+
 	const init = (selectorApp, title) => {
 		const app = document.querySelector(selectorApp);
 		const {
@@ -309,7 +334,8 @@ const data = [
 			btnDel,
 		} = renderPhoneBook(app, title);
 		// Функционал
-		const allRow = renderContacts(list, data);
+
+		const allRow = renderContacts(list, data, getStorage('contacts'));
 		const { closeModal } = modalControl(btnAdd, formOverlay);
 
 		hoverRow(allRow, logo);
@@ -327,3 +353,5 @@ const data = [
 	};
 	window.phoneBookInit = init;
 }
+
+

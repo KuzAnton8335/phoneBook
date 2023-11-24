@@ -2,7 +2,7 @@ import {
 	createHeader, createLogo, createMain, renderFooter, createButtonsGroup,
 	createTable, creatForm, createRow
 } from "./createElements.js";
-import * as data from "./data.js";
+
 
 
 export const renderPhoneBook = (app, title) => {
@@ -39,9 +39,9 @@ export const renderPhoneBook = (app, title) => {
 	}
 };
 
+
 export const renderContacts = (elem, data) => {
-	const allRow = data.map(createRow);
+	const allRow = data.data.map(createRow);
 	elem.append(...allRow);
 	return allRow;
-}
-
+};

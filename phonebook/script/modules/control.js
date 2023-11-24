@@ -1,8 +1,8 @@
 import { createRow } from "./createElements.js";
-import serviceStorange from "./serviceStorange.js";
+// import serviceStorange from "./serviceStorange.js";
 
 
-const modalControl = (btnAdd, formOverlay) => {
+export const modalControl = (btnAdd, formOverlay) => {
 	const openModal = () => {
 		formOverlay.classList.add('is-visible');
 	};
@@ -23,7 +23,7 @@ const modalControl = (btnAdd, formOverlay) => {
 	}
 }
 
-const deleteControl = (btnDel, list) => {
+export const deleteControl = (btnDel, list) => {
 	btnDel.addEventListener('click', () => {
 		document.querySelectorAll('.delete').forEach(del => {
 			del.classList.toggle('is-visible');
@@ -39,17 +39,17 @@ const deleteControl = (btnDel, list) => {
 
 
 
-const addContactData = (contact) => {
+export const addContactData = (contact) => {
 	data.push(contact);
 	setStorage('contacts', contact);
 	console.log(data);
 };
 
-const addContactPage = (contact, list) => {
+export const addContactPage = (contact, list) => {
 	list.append(createRow(contact));
 }
 
-const formControl = (form, list, closeModal) => {
+export const formControl = (form, list, closeModal) => {
 	form.addEventListener('submit', e => {
 		e.preventDefault();
 		const formData = new FormData(e.target);

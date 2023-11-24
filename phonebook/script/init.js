@@ -1,7 +1,8 @@
-import { createRow } from "./modules/createElements.js";
+import { createRow, hoverRow } from "./modules/createElements.js";
 import * as data from "./modules/data.js";
 import { renderPhoneBook, renderContacts, } from "./modules/render.js";
 import { getStorage } from "./modules/serviceStorange.js";
+import { modalControl, deleteControl, formControl } from "./modules/control.js";
 
 {
 	const init = (selectorApp, title) => {

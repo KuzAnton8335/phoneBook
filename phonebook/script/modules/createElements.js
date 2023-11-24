@@ -1,4 +1,5 @@
 
+
 export const createContainer = () => {
 	const container = document.createElement('div');
 	container.classList.add('container');
@@ -157,3 +158,15 @@ export const createRow = ({ name: firstName, surname, phone }) => {
 
 	return tr;
 }
+
+export const hoverRow = (allRow, logo) => {
+	const text = logo.textContent;
+	allRow.forEach(contact => {
+		contact.addEventListener('mouseenter', () => {
+			logo.textContent = contact.phoneLink.textContent;
+		});
+		contact.addEventListener('mouseleave', () => {
+			logo.textContent = text;
+		});
+	})
+};
